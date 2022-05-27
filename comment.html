@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Comment Box</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            $('body').on('click', '#submit', function() {
+                var m = $(this).prev().prev().prev().prev().val();
+                var n = $(this).prev().prev().val();
+                $(this).parent().parent().parent().parent().append('<br><div class="media"><div class="media-left"><img src="1.gif" class="media-object" style="width:50px; height:50px""></div><div class="media-body"><h4 class="media-heading">' + m + '</h4><p>' + n + '</p><div><div><a href="#" class="like"><span class="glyphicon glyphicon-thumbs-up">:</span></a><font class="output">0</font>&nbsp&nbsp&nbsp&nbsp<a href="#" class="comment"><span class="glyphicon glyphicon-comment">:</span> </a><font class="output">0</font>&nbsp&nbsp&nbsp&nbsp<div style="display:none;"><textarea rows="1" class="form-control" cols="100" placeholder="Your Name Here" id="cmtn"></textarea><br><textarea rows="3" class="form-control" cols="100" placeholder="Your comment here" id="cmtc"></textarea><br><button type="button" class="btn-success" id="submit">Submit</button></div></div></div></div></div>');
+                $(this).parent().prev().html(function(i, val) {
+                    return val * 1 + 1
+                });
+                $(this).parent().hide();
+            });
+        });
+
+        $(document).ready(function() {
+            $('body').on('click', '.comment', function() {
+                $(this).next().next().show(500);
+            });
+        });
+        $(document).ready(function() {
+            $('body').on('click', '#post', function() {
+                var x = $("#postn").val();
+                var y = $("#postc").val();
+                $("#main").append('<br><div class="media"><div class="media-left"><img src="1.gif" class="media-object" style="width:50px; height:50px""></div><div class="media-body"><h4 class="media-heading">' + x + '</h4><p>' + y + '</p><div><div><a href="#"class="like"><span class="glyphicon glyphicon-thumbs-up">:</span> </a><font class="output">0</font>&nbsp&nbsp&nbsp&nbsp<a href="#" class="comment"> <span class="glyphicon glyphicon-comment">:</span> </a><font class="output">0</font>&nbsp&nbsp&nbsp&nbsp<div style="display:none;"><textarea rows="1" class="form-control" cols="100" placeholder="Your Name Here" id="cmtn"></textarea><br><textarea rows="3" class="form-control" cols="100" placeholder="Your comment here" id="cmtc"></textarea><br><button type="button" class="btn-success" id="submit">Submit</button></div></div></div></div></div>');
+            });
+        });
+        $(document).ready(function() {
+            $('body').on('click', '.like', function() {
+                $(this).next().html(function(i, val) {
+                    return val * 1 + 1
+                });
+            });
+        });
+    </script>
+</head>
+<style>
+    body {
+        background-image: url("what.png");
+    }
+    
+    img {
+        border-radius: 50%;
+    }
+</style>
+
+<body><br>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-2 media-left"><img src="1.gif" style="width:150px; height:150px"></div>
+            <div class="col-sm-7 media-right"><textarea rows="1" class="form-control" cols="100" placeholder="Your Name Here" id="postn"></textarea><br><textarea rows="6" cols="100" class="form-control emoji" placeholder="Your comment here" id="postc"></textarea></div>
+            <br>
+            <div class="col-sm-3"><br><button type="button" class="btn btn-success img-rounded" style="width:100px;height:50px" id="post">Post</button><br>
+        </div>
+
+        </div>
+    </div><br><br>
+    <div class="container" id="main">
+    </div>
+
+
+</body>
+
+</html>
